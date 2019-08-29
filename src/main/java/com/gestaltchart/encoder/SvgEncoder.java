@@ -4,6 +4,9 @@ import java.io.File;
 
 import com.gestaltchart.Chart;
 
+/**
+ * cf. https://xmlgraphics.apache.org/batik/using/svg-generator.html
+ */
 public class SvgEncoder extends AbstractEncoder {
 
     @Override
