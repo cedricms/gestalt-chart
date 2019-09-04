@@ -1,14 +1,20 @@
 package com.gestaltchart.chart.line;
 
-import com.gestaltchart.AbstractChart;
+import java.awt.Graphics2D;
+
+import com.gestaltchart.chart.AbstractChart;
 
 public class LineChart extends AbstractChart {
 
-    public LineChart(int width, int height) {
-        super(width, height);
+    public LineChart(int canvasWidth, int canvasHeight) {
+        super(canvasWidth, canvasHeight);
     }
     
-    public LineChart(int width, int height, String title) {
-        super(width, height, title);
+    public LineChart(int canvasWidth, int canvasHeight, String title) {
+        super(canvasWidth, canvasHeight, title);
+    }
+    
+    public void writeToGraphics(Graphics2D graphics2d) {
+        // TODO complet with working code.
     }
 }

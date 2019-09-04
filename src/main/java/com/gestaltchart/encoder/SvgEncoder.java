@@ -1,8 +1,9 @@
 package com.gestaltchart.encoder;
 
+import java.awt.Graphics2D;
 import java.io.File;
 
-import com.gestaltchart.Chart;
+import com.gestaltchart.chart.Chart;
 
 /**
  * cf. https://xmlgraphics.apache.org/batik/using/svg-generator.html
@@ -10,8 +11,14 @@ import com.gestaltchart.Chart;
 public class SvgEncoder extends AbstractEncoder {
 
     @Override
-    public void encode(Chart chart, File destination) {
-        // TODO Auto-generated method stub
+    public Graphics2D generateGraphics(Chart chart) {
+        // TODO A compléter.
         
+        return null;
+    }
+    
+    @Override
+    public void renderChart(Chart chart, File destination) {
+        // TODO A compléter.
     }
 }
