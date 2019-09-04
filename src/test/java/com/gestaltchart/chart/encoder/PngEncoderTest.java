@@ -29,13 +29,13 @@ public class PngEncoderTest {
             testRootDirectoryFile = new File(TestConstants.TEST_ROOT_DIRECTORY);
         }
         
-        try {
+        /*try {
             if (testRootDirectoryFile.exists()) {
                 FileUtils.deleteDirectory(testRootDirectoryFile);
             }
         } catch (IOException ioe) {
             throw new IOException("Unable to delete : " + testRootDirectoryFile);
-        }
+        }*/
         
         if (!testRootDirectoryFile.exists()) {
             testRootDirectoryFile.mkdir();

@@ -11,5 +11,5 @@ public interface Encoder {
     
     Graphics2D generateGraphics(Chart chart);
     
-    void renderChart(File destination) throws Exception;
+    void renderChart(Graphics2D graphics2D, File destination) throws Exception;
 }

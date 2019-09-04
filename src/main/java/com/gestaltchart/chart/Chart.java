@@ -50,7 +50,7 @@ public abstract class Chart {
             graphics2d.setColor(titleColor);
             Font font = new Font("SansSerif", Font.BOLD, 36);
             graphics2d.setFont(font);
-            graphics2d.drawString(this.title, this.canvasWidth / 2, 10);
+            graphics2d.drawString(this.title, this.canvasWidth / 2, 50);
         }
     }
 }

@@ -11,12 +11,12 @@ import com.gestaltchart.chart.Chart;
 
 public class PngEncoder extends AbstractEncoder {
 
-    BufferedImage image;
+    BufferedImage chartImage;
     
     @Override
     public Graphics2D generateGraphics(Chart chart) {
-        image = new BufferedImage(chart.getCanvasWidth(), chart.getCanvasHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D graphics2d = image.createGraphics();
+        chartImage = new BufferedImage(chart.getCanvasWidth(), chart.getCanvasHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics2d = chartImage.createGraphics();
         
         chart.writeToGraphics(graphics2d);
         
@@ -24,9 +24,9 @@ public class PngEncoder extends AbstractEncoder {
     }
     
     @Override
-    public void renderChart(File destination) throws Exception {
+    public void renderChart(Graphics2D graphics2D, File destination) throws Exception {
         ImageWriter writer = ImageIO.getImageWritersByFormatName("png").next();
         writer.setOutput(ImageIO.createImageOutputStream(destination));
-        writer.write(image);
+        writer.write(chartImage);
     }
 }
