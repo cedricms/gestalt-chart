@@ -18,7 +18,7 @@ public abstract class AbstractEncoder implements Encoder {
         
         Graphics2D graphics2d = generateGraphics(chart);
         
-        renderChart(chart, destination);
+        renderChart(destination);
     }
     
     protected void validateEncodingInputs(Chart chart, File destination) throws Exception {

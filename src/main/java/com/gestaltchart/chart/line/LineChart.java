@@ -2,9 +2,9 @@ package com.gestaltchart.chart.line;
 
 import java.awt.Graphics2D;
 
-import com.gestaltchart.chart.AbstractChart;
+import com.gestaltchart.chart.Chart;
 
-public class LineChart extends AbstractChart {
+public class LineChart extends Chart {
 
     public LineChart(int canvasWidth, int canvasHeight) {
         super(canvasWidth, canvasHeight);

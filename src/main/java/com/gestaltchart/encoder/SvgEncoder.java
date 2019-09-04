@@ -18,7 +18,7 @@ public class SvgEncoder extends AbstractEncoder {
     }
     
     @Override
-    public void renderChart(Chart chart, File destination) {
+    public void renderChart(File destination) throws Exception {
         // TODO A compléter.
     }
 }
