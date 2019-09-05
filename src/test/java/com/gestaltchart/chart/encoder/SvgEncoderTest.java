@@ -7,6 +7,7 @@ import java.io.IOException;
 import lombok.extern.log4j.Log4j2;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -15,21 +16,21 @@ import com.gestaltchart.TestConstants;
 import com.gestaltchart.chart.Chart;
 import com.gestaltchart.chart.ChartNotFoundException;
 import com.gestaltchart.chart.line.LineChart;
-import com.gestaltchart.encoder.PngEncoder;
+import com.gestaltchart.encoder.SvgEncoder;
 
 @Log4j2
-public class PngEncoderTest extends AbstractEncoderTest {
+public class SvgEncoderTest extends AbstractEncoderTest {
     
     @Test
     public void encodeGivenNullAndNullThenLiftException() throws Exception {
         // Given
         Chart chart = null;
         File destination = null;
-        PngEncoder pngEncoder = new PngEncoder();
+        SvgEncoder encoder = new SvgEncoder();
         
         // When
         Throwable thrown = catchThrowable(() -> {
-            pngEncoder.encode(chart, destination);
+            encoder.encode(chart, destination);
         });
 
         // Then
@@ -41,11 +42,11 @@ public class PngEncoderTest extends AbstractEncoderTest {
         // Given
         Chart chart = new LineChart(400, 300);
         File destination = null;
-        PngEncoder pngEncoder = new PngEncoder();
+        SvgEncoder encoder = new SvgEncoder();
         
         // When
         Throwable thrown = catchThrowable(() -> {
-            pngEncoder.encode(chart, destination);
+            encoder.encode(chart, destination);
         });
 
         // Then
@@ -56,11 +57,11 @@ public class PngEncoderTest extends AbstractEncoderTest {
     public void encodeGivenEmptyChartAndValideFileThenLiftException() throws Exception {
         // Given
         Chart chart = new LineChart(400, 300);
-        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenEmptyAndValideFileThenLiftException.png");
-        PngEncoder pngEncoder = new PngEncoder();
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenEmptyAndValideFileThenLiftException.svg");
+        SvgEncoder encoder = new SvgEncoder();
         
         // When
-        pngEncoder.encode(chart, destination);
+        encoder.encode(chart, destination);
 
         // Then
         assertThat(destination.exists()).isEqualTo(true);
@@ -69,17 +70,19 @@ public class PngEncoderTest extends AbstractEncoderTest {
     @Test
     public void encodeGivenChartWithTitleAndValideFileThenLiftException() throws Exception {
         // Given
-        Chart chart = new LineChart(400, 300, "Test Chart 1");
-        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenChartWithTitleAndValideFileThenLiftException.png");
-        PngEncoder pngEncoder = new PngEncoder();
+        String title = "Test Chart 2";
+        Chart chart = new LineChart(400, 300, title);
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenChartWithTitleAndValideFileThenLiftException.svg");
+        SvgEncoder encoder = new SvgEncoder();
         
         // When
-        pngEncoder.encode(chart, destination);
+        encoder.encode(chart, destination);
 
         // Then
         assertThat(destination.exists()).isEqualTo(true);
         long fileSize = destination.length();
         assertThat(fileSize).isGreaterThan(0);
         log.info("File size : " + fileSize);
+        assertThat(doesWordOccureInFile(destination, title)).isEqualTo(true);
     }
 }

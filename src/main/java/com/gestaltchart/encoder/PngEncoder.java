@@ -16,11 +16,11 @@ public class PngEncoder extends AbstractEncoder {
     @Override
     public Graphics2D generateGraphics(Chart chart) {
         chartImage = new BufferedImage(chart.getCanvasWidth(), chart.getCanvasHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D graphics2d = chartImage.createGraphics();
+        Graphics2D graphics2D = chartImage.createGraphics();
         
-        chart.writeToGraphics(graphics2d);
+        chart.writeToGraphics(graphics2D);
         
-        return graphics2d;
+        return graphics2D;
     }
     
     @Override

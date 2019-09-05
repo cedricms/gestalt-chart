@@ -26,13 +26,17 @@ public class SvgEncoder extends AbstractEncoder {
         // Create a converter for this document.
         SVGGraphics2D graphics2D = new SVGGraphics2D(doc);
         
+        chart.writeToGraphics(graphics2D);
+        
         return graphics2D;
     }
     
     @Override
     public void renderChart(Graphics2D graphics2D, File destination) throws Exception {
         SVGGraphics2D svgGraphics2D = (SVGGraphics2D) graphics2D;
-        svgGraphics2D.stream(new FileWriter(destination));
+        FileWriter fileWriter = new FileWriter(destination);
+        svgGraphics2D.stream(fileWriter);
         svgGraphics2D.dispose();
+        fileWriter.close();
     }
 }

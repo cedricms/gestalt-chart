@@ -15,10 +15,10 @@ public class LineChart extends Chart {
         super(canvasWidth, canvasHeight, title);
     }
     
-    public void writeToGraphics(Graphics2D graphics2d) {
-        /*graphics2d.setColor(Color.BLUE.brighter());
-        graphics2d.setPaint(null);
-        graphics2d.drawLine(20, 100, 120, 100);*/
+    @Override
+    public void writeToGraphicsChartData(Graphics2D graphics2D) {
+        graphics2D.setColor(Color.BLUE.brighter());
+        graphics2D.drawLine(20, 100, 120, 100);
         // TODO complet with working code.
     }
 }
