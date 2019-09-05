@@ -1,5 +1,6 @@
 package com.gestaltchart.encoder;
 
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileWriter;
@@ -25,6 +26,7 @@ public class SvgEncoder extends AbstractEncoder {
     
         // Create a converter for this document.
         SVGGraphics2D graphics2D = new SVGGraphics2D(doc);
+        graphics2D.setSVGCanvasSize(new Dimension(chart.getCanvasWidth(), chart.getCanvasHeight()));
         
         chart.writeToGraphics(graphics2D);
         
