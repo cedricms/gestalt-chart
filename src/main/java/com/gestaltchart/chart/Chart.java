@@ -25,6 +25,8 @@ public abstract class Chart {
     private int titleSize = 18;
     
     private List<Series> seriesList;
+
+    private List<Color> seriesColor;
     
     public Chart(int canvasWidth, int canvasHeight) {
         super();
@@ -33,6 +35,26 @@ public abstract class Chart {
         this.canvasHeight = canvasHeight;
         
         this.seriesList = new ArrayList<>();
+        
+        this.seriesColor = new ArrayList<>();
+        
+        Color color1 = new Color(0.3f, 1.0f, 0.3f);
+        this.seriesColor.add(color1);
+        
+        Color color2 = new Color(1.0f, 0.2f, 0.2f);
+        this.seriesColor.add(color2);
+        
+        Color color3 = new Color(0.2f, 0.2f, 1.0f);
+        this.seriesColor.add(color3);
+        
+        Color color4 = new Color(1.0f, 1.0f, 0.2f);
+        this.seriesColor.add(color4);
+        
+        Color color5 = new Color(1.0f, 0.2f, 1.0f);
+        this.seriesColor.add(color5);
+        
+        Color color6 = new Color(0.2f, 1.0f, 1.0f);
+        this.seriesColor.add(color6);
     }
     
     public Chart(int canvasWidth, int canvasHeight, String title) {

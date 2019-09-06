@@ -53,10 +53,10 @@ public class PngEncoderTest extends AbstractEncoderTest {
     }
     
     @Test
-    public void encodeGivenEmptyChartAndValideFileThenLiftException() throws Exception {
+    public void encodeGivenEmptyChartAndValideFileThenGenerateFile() throws Exception {
         // Given
         Chart chart = new LineChart(400, 300);
-        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenEmptyAndValideFileThenLiftException.png");
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenEmptyChartAndValideFileThenGenerateFile.png");
         PngEncoder pngEncoder = new PngEncoder();
         
         // When
@@ -67,10 +67,10 @@ public class PngEncoderTest extends AbstractEncoderTest {
     }
     
     @Test
-    public void encodeGivenChartWithTitleAndValideFileThenLiftException() throws Exception {
+    public void encodeGivenChartWithTitleAndValideFileThenGenerateFile() throws Exception {
         // Given
         Chart chart = new LineChart(400, 300, "Test Chart 1");
-        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenChartWithTitleAndValideFileThenLiftException.png");
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenChartWithTitleAndValideFileThenGenerateFile.png");
         PngEncoder pngEncoder = new PngEncoder();
         
         // When

@@ -16,6 +16,7 @@ import com.gestaltchart.TestConstants;
 import com.gestaltchart.chart.Chart;
 import com.gestaltchart.chart.ChartNotFoundException;
 import com.gestaltchart.chart.line.LineChart;
+import com.gestaltchart.data.series.LineSeries;
 import com.gestaltchart.encoder.SvgEncoder;
 
 @Log4j2
@@ -54,10 +55,10 @@ public class SvgEncoderTest extends AbstractEncoderTest {
     }
     
     @Test
-    public void encodeGivenEmptyChartAndValideFileThenLiftException() throws Exception {
+    public void encodeGivenEmptyChartAndValideFileThenGenerateFile() throws Exception {
         // Given
         Chart chart = new LineChart(400, 300);
-        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenEmptyAndValideFileThenLiftException.svg");
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenEmptyChartAndValideFileThenGenerateFile.svg");
         SvgEncoder encoder = new SvgEncoder();
         
         // When
@@ -68,11 +69,11 @@ public class SvgEncoderTest extends AbstractEncoderTest {
     }
     
     @Test
-    public void encodeGivenChartWithTitleAndValideFileThenLiftException() throws Exception {
+    public void encodeGivenChartWithTitleAndValideFileThenGenerateFile() throws Exception {
         // Given
         String title = "Test Chart 2";
         Chart chart = new LineChart(400, 300, title);
-        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenChartWithTitleAndValideFileThenLiftException.svg");
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenChartWithTitleAndValideFileThenGenerateFile.svg");
         SvgEncoder encoder = new SvgEncoder();
         
         // When
@@ -84,5 +85,26 @@ public class SvgEncoderTest extends AbstractEncoderTest {
         assertThat(fileSize).isGreaterThan(0);
         log.info("File size : " + fileSize);
         assertThat(doesWordOccureInFile(destination, title)).isEqualTo(true);
+    }
+    
+    @Test
+    public void encodeGivenChartWithOutTitleWithSeriesAndValideFileThengenerateFile() throws Exception {
+        // Given
+        Chart chart = new LineChart(400, 300);
+        
+        LineSeries lineSeries = generateLineSeries("Series Label", 10, 2000);
+        chart.addSeries(lineSeries);
+        
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenChartWithOutTitleWithSeriesAndValideFileThengenerateFile.svg");
+        SvgEncoder encoder = new SvgEncoder();
+        
+        // When
+        encoder.encode(chart, destination);
+
+        // Then
+        assertThat(destination.exists()).isEqualTo(true);
+        long fileSize = destination.length();
+        assertThat(fileSize).isGreaterThan(0);
+        log.info("File size : " + fileSize);
     }
 }
