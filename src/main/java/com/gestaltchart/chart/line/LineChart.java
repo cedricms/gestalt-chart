@@ -3,6 +3,8 @@ package com.gestaltchart.chart.line;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import org.apache.commons.collections4.CollectionUtils;
+
 import com.gestaltchart.chart.Chart;
 
 public class LineChart extends Chart {
@@ -17,8 +19,10 @@ public class LineChart extends Chart {
     
     @Override
     public void writeToGraphicsChartData(Graphics2D graphics2D) {
-        graphics2D.setColor(Color.BLUE.brighter());
-        graphics2D.drawLine(20, 100, 120, 100);
-        // TODO complet with working code.
+        if (!CollectionUtils.isEmpty(this.getSeriesList())) {
+            graphics2D.setColor(Color.BLUE.brighter());
+            graphics2D.drawLine(20, 100, 120, 100);
+            // TODO complet with working code.
+        }
     }
 }
