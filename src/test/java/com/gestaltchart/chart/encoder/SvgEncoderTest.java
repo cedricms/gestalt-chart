@@ -107,4 +107,36 @@ public class SvgEncoderTest extends AbstractEncoderTest {
         assertThat(fileSize).isGreaterThan(0);
         log.info("File size : " + fileSize);
     }
+    
+    
+    @Test
+    public void encodeGivenChartWithTitleWithMultipleSeriesAndValideFileThengenerateFile() throws Exception {
+        // Given
+        String title = "Test Chart 3";
+        Chart chart = new LineChart(400, 300, title);
+        
+        LineSeries lineSeries1 = generateLineSeries("Series Label 1", 10, 2000);
+        chart.addSeries(lineSeries1);
+        
+        LineSeries lineSeries2 = generateLineSeries("Series Label 2", 10, 3000);
+        chart.addSeries(lineSeries2);
+        
+        LineSeries lineSeries3 = generateLineSeries("Series Label 3", 10, 4000);
+        chart.addSeries(lineSeries3);
+        
+        LineSeries lineSeries4 = generateLineSeries("Series Label 4", 10, 5000);
+        chart.addSeries(lineSeries4);
+        
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenChartWithTitleWithMultipleSeriesAndValideFileThengenerateFile.svg");
+        SvgEncoder encoder = new SvgEncoder();
+        
+        // When
+        encoder.encode(chart, destination);
+
+        // Then
+        assertThat(destination.exists()).isEqualTo(true);
+        long fileSize = destination.length();
+        assertThat(fileSize).isGreaterThan(0);
+        log.info("File size : " + fileSize);
+    }
 }

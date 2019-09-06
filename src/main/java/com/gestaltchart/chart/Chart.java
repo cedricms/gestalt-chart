@@ -21,7 +21,7 @@ public abstract class Chart {
     private int canvasHeight;
     
     private String title;
-    private Color titleColor = new Color(0.4f, 0.4f, 0.4f);
+    private Color titleColor = new Color(0.5f, 0.5f, 0.5f);
     private int titleSize = 18;
     
     private List<Series> seriesList;
@@ -38,22 +38,22 @@ public abstract class Chart {
         
         this.seriesColor = new ArrayList<>();
         
-        Color color1 = new Color(0.3f, 1.0f, 0.3f);
+        Color color1 = new Color(0.4f, 0.9f, 0.4f);
         this.seriesColor.add(color1);
         
-        Color color2 = new Color(1.0f, 0.2f, 0.2f);
+        Color color2 = new Color(0.9f, 0.4f, 0.4f);
         this.seriesColor.add(color2);
         
-        Color color3 = new Color(0.2f, 0.2f, 1.0f);
+        Color color3 = new Color(0.4f, 0.4f, 0.9f);
         this.seriesColor.add(color3);
         
-        Color color4 = new Color(1.0f, 1.0f, 0.2f);
+        Color color4 = new Color(0.9f, 0.9f, 0.4f);
         this.seriesColor.add(color4);
         
-        Color color5 = new Color(1.0f, 0.2f, 1.0f);
+        Color color5 = new Color(0.9f, 0.4f, 0.9f);
         this.seriesColor.add(color5);
         
-        Color color6 = new Color(0.2f, 1.0f, 1.0f);
+        Color color6 = new Color(0.4f, 0.9f, 0.9f);
         this.seriesColor.add(color6);
     }
     
