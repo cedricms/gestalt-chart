@@ -1,6 +1,7 @@
 package com.gestaltchart.encoder;
 
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,9 +17,11 @@ public abstract class AbstractEncoder implements Encoder {
         
         createFile(destination);
         
-        Graphics2D graphics2d = generateGraphics(chart);
+        Graphics2D graphics2D = generateGraphics(chart);
         
-        renderChart(graphics2d, destination);
+        intitializeRenderHints(graphics2D);
+        
+        renderChart(graphics2D, destination);
     }
     
     protected void validateEncodingInputs(Chart chart, File destination) throws Exception {
@@ -35,5 +38,12 @@ public abstract class AbstractEncoder implements Encoder {
         if (!destination.exists()) {
             destination.createNewFile();
         }
+    }
+    
+    protected void intitializeRenderHints(Graphics2D graphics2D) {
+        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+			RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT);
+    	graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+    			RenderingHints.VALUE_ANTIALIAS_DEFAULT);
     }
 }
