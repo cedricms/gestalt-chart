@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gestaltchart.data.series.Series;
+import com.gestaltchart.data.DataPoint;
 
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
@@ -24,9 +24,7 @@ public abstract class Chart {
     private Color titleColor = new Color(0.5f, 0.5f, 0.5f);
     private int titleSize = 18;
     
-    private List<Series> seriesList;
-
-    private List<Color> seriesColor;
+    private List<DataPoint> data;
     
     public Chart(int canvasWidth, int canvasHeight) {
         super();
@@ -34,41 +32,13 @@ public abstract class Chart {
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
         
-        this.seriesList = new ArrayList<>();
-        
-        this.seriesColor = new ArrayList<>();
-        
-        Color color1 = new Color(0.4f, 0.9f, 0.4f);
-        this.seriesColor.add(color1);
-        
-        Color color2 = new Color(0.9f, 0.4f, 0.4f);
-        this.seriesColor.add(color2);
-        
-        Color color3 = new Color(0.4f, 0.4f, 0.9f);
-        this.seriesColor.add(color3);
-        
-        Color color4 = new Color(0.9f, 0.9f, 0.4f);
-        this.seriesColor.add(color4);
-        
-        Color color5 = new Color(0.9f, 0.4f, 0.9f);
-        this.seriesColor.add(color5);
-        
-        Color color6 = new Color(0.4f, 0.9f, 0.9f);
-        this.seriesColor.add(color6);
+        this.data = new ArrayList();
     }
     
     public Chart(int canvasWidth, int canvasHeight, String title) {
         this(canvasWidth, canvasHeight);
         
         this.title = title;
-    }
-    
-    public void addSeries(Series series) {
-        if (this.seriesList == null) {
-            this.seriesList = new ArrayList();
-        }
-        
-        this.seriesList.add(series);
     }
     
     public void writeToGraphics(Graphics2D graphics2D) {
@@ -79,7 +49,7 @@ public abstract class Chart {
         writeToGraphicsChartData(graphics2D);
     }
     
-    private void writeTitle(Graphics2D graphics2D) {
+    protected void writeTitle(Graphics2D graphics2D) {
         log.debug("Title : " + this.title);
         if (this.title != null) {            
             graphics2D.setColor(this.titleColor);
@@ -95,12 +65,8 @@ public abstract class Chart {
             int titleHeight = fontMetrics.getHeight();
             
             graphics2D.drawString(this.title, center, titleHeight);
-            
-            /*graphics2D.setColor(titleColor);
-            graphics2D.drawLine(center - 20, 60, center + 20, 60);*/
         }
     }
-
     
     public abstract void writeToGraphicsChartData(Graphics2D graphics2d);
 }

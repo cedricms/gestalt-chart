@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import com.gestaltchart.TestConstants;
 import com.gestaltchart.data.DataPoint;
+import com.gestaltchart.data.DoughnutDataPoint;
 import com.gestaltchart.data.LineDataPoint;
 import com.gestaltchart.data.series.LineSeries;
 
@@ -30,16 +31,20 @@ public abstract class AbstractEncoderTest {
             testRootDirectoryFile = new File(TestConstants.TEST_ROOT_DIRECTORY);
         }
         
+        cleanTestFileDirectory();
+        
+        if (!testRootDirectoryFile.exists()) {
+            testRootDirectoryFile.mkdir();
+        }
+    }
+    
+    protected void cleanTestFileDirectory() throws IOException {
         try {
             if (testRootDirectoryFile.exists()) {
                 FileUtils.deleteDirectory(testRootDirectoryFile);
             }
         } catch (IOException ioe) {
             throw new IOException("Unable to delete : " + testRootDirectoryFile);
-        }
-        
-        if (!testRootDirectoryFile.exists()) {
-            testRootDirectoryFile.mkdir();
         }
     }
         
@@ -78,5 +83,13 @@ public abstract class AbstractEncoderTest {
        LineSeries lineSeries = new LineSeries(label, data);
        
        return lineSeries;
+   }
+   
+   protected DoughnutDataPoint createDoughnutDataPoint(String label, double value) {
+        DoughnutDataPoint dataPoint = new DoughnutDataPoint();
+        dataPoint.setLabel(label);
+        dataPoint.setValue(value);
+                
+        return dataPoint;
    }
 }

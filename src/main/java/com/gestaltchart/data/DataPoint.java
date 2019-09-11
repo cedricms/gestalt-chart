@@ -1,5 +1,10 @@
 package com.gestaltchart.data;
 
-public interface DataPoint {
+import lombok.Data;
+
+@Data
+public class DataPoint {
     
+    Double value;
+    String label;
 }

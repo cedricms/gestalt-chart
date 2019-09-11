@@ -6,12 +6,12 @@ import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
 
-import com.gestaltchart.chart.Chart;
+import com.gestaltchart.chart.SeriesChart;
 import com.gestaltchart.data.DataPoint;
 import com.gestaltchart.data.LineDataPoint;
 import com.gestaltchart.data.series.Series;
 
-public class LineChart extends Chart {
+public class LineChart extends SeriesChart {
 
     public LineChart(int canvasWidth, int canvasHeight) {
         super(canvasWidth, canvasHeight);
