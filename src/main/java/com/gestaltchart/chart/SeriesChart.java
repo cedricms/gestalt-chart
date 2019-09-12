@@ -1,7 +1,5 @@
 package com.gestaltchart.chart;
 
-import java.awt.Color;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,32 +14,10 @@ public abstract class SeriesChart extends Chart {
     
     private List<Series> seriesList;
 
-    private List<Color> seriesColor;
-    
     public SeriesChart(int canvasWidth, int canvasHeight) {
         super(canvasWidth, canvasHeight);
         
         this.seriesList = new ArrayList();
-        
-        this.seriesColor = new ArrayList();
-        
-        Color color1 = new Color(0.4f, 0.9f, 0.4f);
-        this.seriesColor.add(color1);
-        
-        Color color2 = new Color(0.9f, 0.4f, 0.4f);
-        this.seriesColor.add(color2);
-        
-        Color color3 = new Color(0.4f, 0.4f, 0.9f);
-        this.seriesColor.add(color3);
-        
-        Color color4 = new Color(0.9f, 0.9f, 0.4f);
-        this.seriesColor.add(color4);
-        
-        Color color5 = new Color(0.9f, 0.4f, 0.9f);
-        this.seriesColor.add(color5);
-        
-        Color color6 = new Color(0.4f, 0.9f, 0.9f);
-        this.seriesColor.add(color6);
     }
     
     public SeriesChart(int canvasWidth, int canvasHeight, String title) {

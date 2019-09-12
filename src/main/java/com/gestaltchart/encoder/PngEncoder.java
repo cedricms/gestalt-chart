@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 
 import com.gestaltchart.chart.Chart;
@@ -26,6 +27,15 @@ public class PngEncoder extends AbstractEncoder {
     @Override
     public void renderChart(Graphics2D graphics2D, File destination) throws Exception {
         ImageWriter writer = ImageIO.getImageWritersByFormatName("png").next();
+        
+        ImageWriteParam param = writer.getDefaultWriteParam();
+
+        if (param.canWriteCompressed()) { 
+            // NOTE: Any method named [set|get]Compression.* throws UnsupportedOperationException if false
+            param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+            param.setCompressionQuality(1.0f);
+        }
+        
         writer.setOutput(ImageIO.createImageOutputStream(destination));
         writer.write(chartImage);
     }

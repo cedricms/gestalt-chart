@@ -48,7 +48,7 @@ public class LineChart extends SeriesChart {
                 float scale = yMax / maxHeightValue;
                 
                 for (int i = 1 ; i < quantityOfData ; i++) {
-                    graphics2D.setColor(this.getSeriesColor().get(seriesColorIndex));
+                    graphics2D.setColor(this.getDataPalette().get(seriesColorIndex));
                     
                     LineDataPoint dataPoint1 = (LineDataPoint) data.get(i - 1);
                     LineDataPoint dataPoint2 = (LineDataPoint) data.get(i);

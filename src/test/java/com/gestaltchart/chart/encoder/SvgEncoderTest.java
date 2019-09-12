@@ -151,12 +151,12 @@ public class SvgEncoderTest extends AbstractEncoderTest {
         String title = "Test Chart 4";
         Chart chart = new DoughnutChart(400, 300, title);
         
-        List<DataPoint> data = new ArrayList<>();
+        List<DataPoint> data = new ArrayList();
         
         DataPoint data1 = createDoughnutDataPoint("Data 1", 42);
         data.add(data1);
         
-        DataPoint data2 = createDoughnutDataPoint("Data 2", 3.14);
+        DataPoint data2 = createDoughnutDataPoint("Data 2", 3.14159);
         data.add(data2);
         
         DataPoint data3 = createDoughnutDataPoint("Data 3", 51);
@@ -167,6 +167,15 @@ public class SvgEncoderTest extends AbstractEncoderTest {
         
         DataPoint data5 = createDoughnutDataPoint("Data 5", 7);
         data.add(data5);
+        
+        DataPoint data6 = createDoughnutDataPoint("Data 6", 2.1);
+        data.add(data6);
+        
+        DataPoint data7 = createDoughnutDataPoint("Data 7", 10);
+        data.add(data7);
+        
+        DataPoint data8 = createDoughnutDataPoint("Data 8", 38);
+        data.add(data8);
         
         chart.setData(data);
         
