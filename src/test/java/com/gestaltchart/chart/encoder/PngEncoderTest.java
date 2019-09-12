@@ -88,7 +88,7 @@ public class PngEncoderTest extends AbstractEncoderTest {
     }
     
         @Test
-    public void encodeGivenDoughnutChartThengenerateFile() throws Exception {
+    public void encodeGivenDoughnutChartThenGenerateFile() throws Exception {
         // Given
         String title = "Test Chart 2";
         Chart chart = new DoughnutChart(500, 400, title);
@@ -121,7 +121,7 @@ public class PngEncoderTest extends AbstractEncoderTest {
         
         chart.setData(data);
         
-        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenDoughnutChartThengenerateFile.png");
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenDoughnutChartThenGenerateFile.png");
         PngEncoder encoder = new PngEncoder();
         
         // When

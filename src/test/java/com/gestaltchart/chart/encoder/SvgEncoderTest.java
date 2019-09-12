@@ -146,7 +146,7 @@ public class SvgEncoderTest extends AbstractEncoderTest {
     }
         
     @Test
-    public void encodeGivenDoughnutChartThengenerateFile() throws Exception {
+    public void encodeGivenDoughnutChartThenGenerateFile() throws Exception {
         // Given
         String title = "Test Chart 4";
         Chart chart = new DoughnutChart(400, 300, title);
@@ -179,7 +179,7 @@ public class SvgEncoderTest extends AbstractEncoderTest {
         
         chart.setData(data);
         
-        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenDoughnutChartThengenerateFile.svg");
+        File destination = new File(TestConstants.TEST_ROOT_DIRECTORY + File.separator + "encodeGivenDoughnutChartThenGenerateFile.svg");
         SvgEncoder encoder = new SvgEncoder();
         
         // When
