@@ -119,4 +119,16 @@ public abstract class Chart {
     }
     
     public abstract void writeToGraphicsChartData(Graphics2D graphics2d);
+    
+    public Color getDataPaletteColor(int id) {
+        if (this.dataPalette != null) {
+            int numberOfColors = this.dataPalette.size();
+            
+            int pickedColor = id % numberOfColors;
+            
+            return this.dataPalette.get(pickedColor);
+        }
+        
+        return null;
+    }
 }

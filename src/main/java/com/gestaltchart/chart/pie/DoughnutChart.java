@@ -189,7 +189,7 @@ public class DoughnutChart extends Chart {
             , double currentAngle
             , double angle
             , int dataPointId) {
-        graphics2D.setColor(this.getDataPalette().get(dataPointId));
+        graphics2D.setColor(this.getDataPaletteColor(dataPointId));
         
         graphics2D.fillArc((int) ((this.getCanvasWidth() - (2 * radius)) / 2)
                         , (int) ((this.getCanvasHeight() - (2 * radius)) / 2)

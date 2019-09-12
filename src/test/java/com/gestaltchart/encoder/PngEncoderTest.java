@@ -1,4 +1,4 @@
-package com.gestaltchart.chart.encoder;
+package com.gestaltchart.encoder;
 
 import java.io.File;
 import java.io.FileNotFoundException;

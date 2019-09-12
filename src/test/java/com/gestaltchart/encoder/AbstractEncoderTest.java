@@ -1,4 +1,4 @@
-package com.gestaltchart.chart.encoder;
+package com.gestaltchart.encoder;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,7 +31,7 @@ public abstract class AbstractEncoderTest {
             testRootDirectoryFile = new File(TestConstants.TEST_ROOT_DIRECTORY);
         }
         
-        //cleanTestFileDirectory();
+        cleanTestFileDirectory();
         
         if (!testRootDirectoryFile.exists()) {
             testRootDirectoryFile.mkdir();
