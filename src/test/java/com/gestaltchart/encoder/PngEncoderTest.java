@@ -87,7 +87,7 @@ public class PngEncoderTest extends AbstractEncoderTest {
         log.info("File size : " + fileSize);
     }
     
-        @Test
+    @Test
     public void encodeGivenDoughnutChartThenGenerateFile() throws Exception {
         // Given
         String title = "Test Chart 2";

@@ -10,7 +10,7 @@ import com.gestaltchart.chart.Chart;
 import com.gestaltchart.chart.ChartNotFoundException;
 
 public abstract class AbstractEncoder implements Encoder {
-    
+        
     @Override
     public void encode(Chart chart, File destination) throws Exception {
         validateEncodingInputs(chart, destination);
