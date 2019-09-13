@@ -40,7 +40,12 @@ public abstract class Chart {
         this.canvasHeight = canvasHeight;
         
         this.data = new ArrayList();
+        initDataPalette();
         
+        this.backgroundColor = new Color(1f, 1f, 1f);
+    }
+    
+    private void initDataPalette() {
         this.dataPalette = new ArrayList();
         
         Color color1 = new Color(0.4f, 0.9f, 0.4f);
@@ -66,8 +71,6 @@ public abstract class Chart {
         
         Color color8 = new Color(0.9f, 0.5f, 0.5f);
         this.dataPalette.add(color8);
-        
-        this.backgroundColor = new Color(1f, 1f, 1f);
     }
     
     public Chart(int canvasWidth, int canvasHeight, String title) {
@@ -79,11 +82,20 @@ public abstract class Chart {
     public void writeToGraphics(Graphics2D graphics2D) {
         graphics2D.setStroke(new BasicStroke(3));
                 
+        paintBackground(graphics2D);
+                
         writeToGraphicsChartData(graphics2D);
         
         writeTitle(graphics2D);
         
         // writeCenterAxis(graphics2D);
+    }
+    
+    private void paintBackground(Graphics2D graphics2D) {
+        if (this.backgroundColor != null) {
+            graphics2D.setColor(this.backgroundColor);
+            graphics2D.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+        }
     }
     
     private void writeCenterAxis(Graphics2D graphics2D) {
