@@ -131,7 +131,7 @@ public class DoughnutChart extends Chart {
         
         String value = numberFormat.format(dataPoint.getValue());
                 
-        Font font = new Font("SansSerif", Font.BOLD, this.getLabelSize());
+        Font font = new Font("SansSerif", Font.BOLD, (int) (this.getLabelSize() * 1.25));
         graphics2D.setFont(font);
         
         FontMetrics fontMetrics = graphics2D.getFontMetrics(font);
