@@ -13,6 +13,7 @@ public class JpgEncoder extends BitmapEncoder {
     public Graphics2D generateGraphics(Chart chart) {
         chartImage = new BufferedImage(chart.getCanvasWidth(), chart.getCanvasHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics2D = chartImage.createGraphics();
+        intitializeRenderHints(graphics2D);
         
         chart.writeToGraphics(graphics2D);
         

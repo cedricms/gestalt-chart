@@ -12,7 +12,7 @@ import javax.imageio.stream.ImageOutputStream;
 
 public abstract class BitmapEncoder extends AbstractEncoder {
     
-    protected float COMPRESSION_QUALITY = 0.85f;
+    protected float COMPRESSION_QUALITY = 0.875f;
     
     public void renderBitMapChart(BufferedImage chartImage, String formatName, File destination) throws Exception {
         ImageWriter writer = ImageIO.getImageWritersByFormatName(formatName).next();

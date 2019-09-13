@@ -27,6 +27,7 @@ public class SvgEncoder extends AbstractEncoder {
         // Create a converter for this document.
         SVGGraphics2D graphics2D = new SVGGraphics2D(doc);
         graphics2D.setSVGCanvasSize(new Dimension(chart.getCanvasWidth(), chart.getCanvasHeight()));
+        intitializeRenderHints(graphics2D);
         
         chart.writeToGraphics(graphics2D);
         
