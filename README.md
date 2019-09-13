@@ -4,7 +4,7 @@ A Java chart generator that aims to make static JPG, PNG or animated SVG files.
 ## Supported charts
 
 ### Doughnut
-![alt text](./img/simpleDoughnutChart.svg "Simple doughnut chart")
+![alt text](./img/simpleDoughnutChart.png "Simple doughnut chart")
 
 ```java
 int width = 400;

@@ -31,7 +31,7 @@ public abstract class AbstractEncoderTest {
             testRootDirectoryFile = new File(TestConstants.TEST_ROOT_DIRECTORY);
         }
         
-        cleanTestFileDirectory();
+        //cleanTestFileDirectory();
         
         if (!testRootDirectoryFile.exists()) {
             testRootDirectoryFile.mkdir();

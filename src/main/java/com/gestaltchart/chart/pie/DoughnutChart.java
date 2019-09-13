@@ -106,13 +106,15 @@ public class DoughnutChart extends Chart {
                 dataPointId++;
             }
             
+            dataPointId = 0;
             currentAngle = 0;
             for (DataPoint dataPoint : this.getData()) {
                 double angle = 360 * dataPoint.getValue() / totalValue;
                 
-                drawValue(graphics2D, dataPoint, center, middle, radius, angle, currentAngle);
+                drawValue(graphics2D, dataPoint, center, middle, radius, angle, currentAngle, dataPointId);
                 
                 currentAngle = currentAngle + angle;
+                dataPointId++;
             }
             
             log.debug("Doughnut chart totalValue = " + totalValue);
@@ -125,7 +127,8 @@ public class DoughnutChart extends Chart {
             , int middle
             , double radius
             , double angle
-            , double currentAngle) {
+            , double currentAngle
+            , int dataPointId) {
         NumberFormat numberFormat = DecimalFormat.getInstance();
         numberFormat.setMaximumFractionDigits(2);
         
@@ -146,6 +149,12 @@ public class DoughnutChart extends Chart {
         int valueHeight = fontMetrics.getHeight();
         int yValue = (int) ((middle - (radius * radiusFactor * Math.sin(Math.toRadians(valueAngle))) + ((valueHeight) / 2)));
         
+        drawValueBubble(graphics2D
+                        , valueWidth
+                        , xValue
+                        , yValue
+                        , dataPointId);
+        
         // Shadow
         graphics2D.setColor(this.getLabelColor().darker().darker());
         graphics2D.drawString(value, xValue + 1, yValue + 1);
@@ -153,6 +162,30 @@ public class DoughnutChart extends Chart {
         // Label
         graphics2D.setColor(this.getLabelColor().brighter().brighter());
         graphics2D.drawString(value, xValue, yValue);
+    }
+    
+    private void drawValueBubble(Graphics2D graphics2D
+                            , int valueWidth
+                            , int xValue
+                            , int yValue
+                            , int dataPointId) {
+        double bubbleRadius = valueWidth * 1.375;
+        double x = xValue - (bubbleRadius / 6);
+        double y = yValue - (bubbleRadius * 0.68);
+        double w = bubbleRadius;
+        double h = bubbleRadius;
+		
+		Shape circleShadow = new Ellipse2D.Double(x + 1, y + 1, w, h);
+		graphics2D.setColor(this.getDataPaletteColor(dataPointId).darker());
+		graphics2D.draw(circleShadow);
+		
+		Shape circle = new Ellipse2D.Double(x, y, w, h);
+		graphics2D.setColor(this.getDataPaletteColor(dataPointId).brighter());
+		graphics2D.fill(circle);
+		
+		Shape circleHightlight = new Ellipse2D.Double(x - 1, y - 1, w, h);
+		graphics2D.setColor(this.getDataPaletteColor(dataPointId).brighter().brighter());
+		graphics2D.draw(circleHightlight);
     }
     
     private void drawLabel(Graphics2D graphics2D
